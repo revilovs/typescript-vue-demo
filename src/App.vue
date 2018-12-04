@@ -1,28 +1,56 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <b-container>
+      <b-jumbotron header="ToDo-List" lead="Here we go again"></b-jumbotron>
+      <create-todo-input v-on:todoCreated="addTodo"></create-todo-input>
+      <b-button variant="danger" @click="clearDone">Clear done items</b-button>
+      <ul>
+        <to-do-item v-for="(todo) in todos" v-bind:key="todo.description" v-bind:todo="todo" v-on:toggleDone="todo.done = !todo.done"></to-do-item>
+      </ul>
+    </b-container>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ToDoItem from './components/ToDoItem';
+import CreateToDoInput from './components/CreateTodoInput';
 
 export default {
-  name: 'app',
+  name: 'App',
+  data () {
+    return {
+      todos: [
+        {
+          description: 'PBO Vortrag vorbereiten',
+          done: true
+        },
+        {
+          description: 'TypeScript konfigurieren',
+          done: false
+        }
+      ]
+    }
+  },
+
   components: {
-    HelloWorld
+    'to-do-item': ToDoItem,
+    'create-todo-input': CreateToDoInput
+  },
+
+  methods: {
+    addTodo: function(event) {
+      this.todos.push({
+        description: event.description,
+        done: false
+      })
+    },
+
+    clearDone: function(){
+      this.todos = this.todos.filter( (todo) => !todo.done);
+    }
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="scss">
 </style>
