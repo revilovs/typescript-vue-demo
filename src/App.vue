@@ -15,22 +15,28 @@
 import ToDoItem from './components/ToDoItem.vue';
 import CreateToDoInput from './components/CreateTodoInput.vue';
 import Vue from 'vue';
-import Todo from './types'
+import {Todo, Priority} from './types'
 
 export default Vue.extend({
   name: 'App',
-  data (): {todos: Todo[]} {
+  data (): {todos: Todo[], nextID: number} {
     return {
       todos: [
         {
+          id: 0,
           description: 'PBO Vortrag vorbereiten',
-          done: true
+          done: true,
+          priority: '🤷‍♂️'
         },
         {
+          id: 1,
           description: 'TypeScript konfigurieren',
-          done: false
+          done: false,
+          priority: '‼'
         }
-      ]
+      ],
+
+      nextID: 2
     }
   },
 
@@ -42,8 +48,10 @@ export default Vue.extend({
   methods: {
     addTodo: function(event: {description: string}) {
       this.todos.push({
+        id: this.nextID++,
         description: event.description,
-        done: false
+        done: false,
+        priority: '❗️'
       })
     },
 

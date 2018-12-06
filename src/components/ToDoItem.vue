@@ -1,14 +1,14 @@
 <template>
     <li>
         <b-form-checkbox v-model="done">
-            {{todo.description}}
+            {{todo.priority}} {{todo.description}}
         </b-form-checkbox>
     </li>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import Todo from '../types'
+import {Todo} from '../types'
 
 export default Vue.extend({
     name: 'ToDoItem',

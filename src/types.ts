@@ -1,4 +1,8 @@
-export default interface Todo {
+export interface Todo {
+    id: number;
     description: string;
     done: boolean;
+    priority: Priority
 }
+
+export type Priority = '🤷‍♂️'| '❗️' | '‼';
