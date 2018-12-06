@@ -11,11 +11,12 @@
   </div>
 </template>
 
-<script>
-import ToDoItem from './components/ToDoItem';
-import CreateToDoInput from './components/CreateTodoInput';
+<script lang="ts">
+import ToDoItem from './components/ToDoItem.vue';
+import CreateToDoInput from './components/CreateTodoInput.vue';
+import Vue from 'vue';
 
-export default {
+export default Vue.extend({
   name: 'App',
   data () {
     return {
@@ -38,7 +39,7 @@ export default {
   },
 
   methods: {
-    addTodo: function(event) {
+    addTodo: function(event: {description: string}) {
       this.todos.push({
         description: event.description,
         done: false
@@ -49,7 +50,8 @@ export default {
       this.todos = this.todos.filter( (todo) => !todo.done);
     }
   }
-}
+});
+
 </script>
 
 <style lang="scss">
