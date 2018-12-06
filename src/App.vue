@@ -27,7 +27,7 @@ export default Vue.extend({
         },
         {
           description: 'TypeScript konfigurieren',
-          done: false
+          done: 'false'
         }
       ]
     }
@@ -41,7 +41,7 @@ export default Vue.extend({
   methods: {
     addTodo: function(event: {description: string}) {
       this.todos.push({
-        description: event.description,
+        descr: event.description,
         done: false
       })
     },

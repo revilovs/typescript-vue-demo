@@ -16,7 +16,7 @@ export default Vue.extend({
     ],
     data() {
         return {
-            done: this.todo.done
+            done: this.todo.Done
         };
     },
     watch: {
