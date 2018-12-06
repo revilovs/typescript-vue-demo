@@ -2,6 +2,10 @@
 
 This project aims at demonstrating how to modify an existing Vue.js project to use TypeScript. You can comprehend the steps by looking at the commit diffs.
 
+It is the result of a rather short live demo for a university project, so the resulting app is not really useful, nor are many TypeScript concepts shown or explained. 
+
+This repo primarily has the purpose of making the results of the talk/demo accessible to the attendees of the PBO course at [HTW Dresden](http://www.htw-dresden.de).
+
 ## Prequisites
 
 To reproduce the following steps, you need to have the Vue-CLI and TypeScript installed.
@@ -56,9 +60,23 @@ Alternative approach without the Vue CLI:
 
 Now we have TypeSript configured. Maybe the TypeScript compiler has already marked some errors for you. In my case, I needed to declare the type of the `event` argument in the `addTodo` function.
 
+## Add deliberate mistakes
+(Commit ae1a1d9d1e373740f2865537a2281d176591f294)
+
+**Don't do this at home**
+
+This step only serves to demonstrate what difference the type annotations (see next step) make
+
+## Use Interfaces and type annotations
+(Commits da86fe27f3c151b949035268a3ed3f93e88f7246 and e757328ae682d933041ef54032ffde4177500e77)
+Now, finally, we are using TypeScript. The deliberate mistakes from the last step have no chance of going through undetected if we use type annotations.
+
+My simple example demonstrates only basic type annotations, interfaces and string literal types.
+
 ## Resources
 
 I used the following guides and tutorials for this demo
 
 * https://alexjover.com/blog/integrate-typescript-in-your-vue-project/
 * https://vuejs.org/v2/guide/typescript.html
+* https://frontendsociety.com/using-a-typescript-interfaces-and-types-as-a-prop-type-in-vuejs-508ab3f83480
