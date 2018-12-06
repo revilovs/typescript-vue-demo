@@ -15,10 +15,11 @@
 import ToDoItem from './components/ToDoItem.vue';
 import CreateToDoInput from './components/CreateTodoInput.vue';
 import Vue from 'vue';
+import Todo from './types'
 
 export default Vue.extend({
   name: 'App',
-  data () {
+  data (): {todos: Todo[]} {
     return {
       todos: [
         {
@@ -27,7 +28,7 @@ export default Vue.extend({
         },
         {
           description: 'TypeScript konfigurieren',
-          done: 'false'
+          done: false
         }
       ]
     }
@@ -41,7 +42,7 @@ export default Vue.extend({
   methods: {
     addTodo: function(event: {description: string}) {
       this.todos.push({
-        descr: event.description,
+        description: event.description,
         done: false
       })
     },

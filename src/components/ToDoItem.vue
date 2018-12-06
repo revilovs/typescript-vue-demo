@@ -8,15 +8,18 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import Todo from '../types'
 
 export default Vue.extend({
     name: 'ToDoItem',
-    props: [ 
-        'todo'
-    ],
-    data() {
+    props: { 
+        todo: {
+            type: Object as () => Todo
+        }
+    },
+    data() : {done: boolean} {
         return {
-            done: this.todo.Done
+            done: this.todo.done
         };
     },
     watch: {
